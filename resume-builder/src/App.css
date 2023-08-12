@@ -2,16 +2,43 @@ body {
   display: flex;
   width:100vw;
   height:100vh;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 2.2vw;
 }
 
 .input-container {
-  width:20vw;
+  width:25vw;
   background-color: bisque;
   min-height: 100vh;
+  border-right: 2px solid black;
 }
 
 .resume-display {
   flex: 1 0 auto;
   background-color: rgb(1, 9, 59);
   width:100%;
+}
+
+.category {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1.5vh 0;
+  border-bottom: 1px solid black;
+  flex-direction: column;
+  gap:1vh;
+}
+
+
+.category-header {
+  font-size: 2vw;
+}
+
+.collapse {
+  width: 2vw;
+  height:auto;
 }
