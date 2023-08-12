@@ -1,0 +1,17 @@
+body {
+  display: flex;
+  width:100vw;
+  height:100vh;
+}
+
+.input-container {
+  width:20vw;
+  background-color: bisque;
+  min-height: 100vh;
+}
+
+.resume-display {
+  flex: 1 0 auto;
+  background-color: rgb(1, 9, 59);
+  width:100%;
+}
