@@ -8,6 +8,8 @@ function App() {
   const [activeIndex, setActiveIndex] = useState(-1);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
 
   function showContent(i) {
     if (i === activeIndex) {
@@ -25,6 +27,14 @@ function App() {
     setLastName(e.target.value);
   }
 
+  function updatePhone(e) {
+    setPhoneNumber(e.target.value);
+  }
+
+  function updateEmail(e) {
+    setEmail(e.target.value);
+  }
+
   let fullName = `${firstName} ${lastName}`;
 
   return (
@@ -36,7 +46,11 @@ function App() {
         <Category categoryName="Personal Info" index={0} isActive={activeIndex === 0} showContent={showContent}>
           {
             activeIndex === 0 && 
-            <PersonalInfo updateFirst={updateFirstName} updateLast={updateLastName}/> 
+            <PersonalInfo updateFirst={updateFirstName} 
+             updateLast={updateLastName}
+             updatePhone={updatePhone}
+             updateEmail={updateEmail}
+            /> 
           }
         </Category>
         <Category categoryName="Education" index={1} isActive={activeIndex === 1} showContent={showContent}/>
@@ -46,6 +60,8 @@ function App() {
       <div className="resume-display">
         <div className="resume">
           <h1>{fullName}</h1>
+          <h1>{phoneNumber}</h1>
+          <h1>{email}</h1>
         </div>
       </div>
     </>
