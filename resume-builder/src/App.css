@@ -5,21 +5,21 @@ body {
   overflow: hidden;
 }
 
+#root {
+  display: flex;
+  width:100vw;
+  height:100vh;
+}
+
 .title {
   font-size: 2.2vw;
 }
 
 .input-container {
-  width:25vw;
+  flex-basis: 28%;
   background-color: bisque;
-  min-height: 100vh;
+  min-height: 50vh;
   border-right: 2px solid black;
-}
-
-.resume-display {
-  flex: 1 0 auto;
-  background-color: rgb(1, 9, 59);
-  width:100%;
 }
 
 .category {
@@ -41,4 +41,23 @@ body {
 .collapse {
   width: 2vw;
   height:auto;
+}
+
+.resume-display {
+  flex: 1 0 auto;
+  background-color: rgb(202, 202, 202);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.resume-display h1 {
+  color:black;
+  font-size: 24px;
+}
+
+.resume {
+  color:black;
+  font-size: 24px;
 }
