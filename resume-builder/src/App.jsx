@@ -6,10 +6,15 @@ import './App.css'
 
 function App() {
   const [activeIndex, setActiveIndex] = useState(-1);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
+
+  const [personalInfo, setPersonalInfo] = useState(
+    {
+      firstName: '',
+      lastName: '',
+      phoneNumber: '',
+      email: '',
+    }
+  );
 
   function showContent(i) {
     if (i === activeIndex) {
@@ -20,22 +25,22 @@ function App() {
   }
 
   function updateFirstName(e) {
-    setFirstName(e.target.value);
+    setPersonalInfo(personalInfo => ({...personalInfo, firstName: e.target.value}));
   }
 
   function updateLastName(e) {
-    setLastName(e.target.value);
+    setPersonalInfo(personalInfo => ({...personalInfo, lastName: e.target.value}));
   }
 
   function updatePhone(e) {
-    setPhoneNumber(e.target.value);
+    setPersonalInfo(personalInfo => ({...personalInfo, phoneNumber: e.target.value}));
   }
 
   function updateEmail(e) {
-    setEmail(e.target.value);
+    setPersonalInfo(personalInfo => ({...personalInfo, email: e.target.value}));
   }
 
-  let fullName = `${firstName} ${lastName}`;
+  let fullName = `${personalInfo.firstName} ${personalInfo.lastName}`;
 
   return (
     <>
@@ -60,8 +65,8 @@ function App() {
       <div className="resume-display">
         <div className="resume">
           <h1>{fullName}</h1>
-          <h1>{phoneNumber}</h1>
-          <h1>{email}</h1>
+          <h1>{personalInfo.phoneNumber}</h1>
+          <h1>{personalInfo.email}</h1>
         </div>
       </div>
     </>
