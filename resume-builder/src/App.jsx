@@ -30,23 +30,6 @@ function App() {
     },
   ]);
 
-  let eduId = educationInfo.length - 1;
-
-  function addEducation() {
-    const newEducation = 
-      {
-        id: eduId + 1,
-        schoolName: '',
-        startDate: '',
-        endDate: '',
-        location: '',
-        gpa: '',
-        degree: '',
-        major: '',
-      }
-    setEducationInfo((prevInfo) => ([...prevInfo, newEducation]))
-  }
-
   function showContent(i) {
     if (i === activeIndex) {
       setActiveIndex(-1);
@@ -71,63 +54,50 @@ function App() {
     setPersonalInfo(personalInfo => ({...personalInfo, email: e.target.value}));
   }
 
-  function updateSchoolName(e, id) {
+  function updateEduInput(e, id, indexer) {
     const newData = [...educationInfo];
-    newData[id].schoolName = e.target.value;
+    newData.map((data) => {
+      if(data.id === id) {
+        data[indexer] = e.target.value;
+      }
+    });
     setEducationInfo(newData);
   }
 
-  function updateDate(e, id, option) {
-    const newData = [...educationInfo];
-    if (option === 0) {
-      newData[id].startDate = e.target.value;
-    } else {
-      newData[id].endDate = e.target.value;
-    }
-    setEducationInfo(newData);
+  let eduId = educationInfo[educationInfo.length -1].id;
+
+  function addEducation() {
+    const newEducation = 
+      {
+        id: eduId + 1,
+        schoolName: '',
+        startDate: '',
+        endDate: '',
+        location: '',
+        gpa: '',
+        degree: '',
+        major: '',
+      }
+    setEducationInfo((prevInfo) => ([...prevInfo, newEducation]))
   }
 
-  function updateFocus(e, id, option) {
-    const newData = [...educationInfo];
-    if (option === 0) {
-      newData[id].major = e.target.value;
-    } else {
-      newData[id].degree = e.target.value;
-    }
-    setEducationInfo(newData);
-  }
-  function updateGPA(e, id) {
-    const newData = [...educationInfo];
-    newData[id].gpa = e.target.value;
-    setEducationInfo(newData);
-  }
-  function updateLocation(e, id) {
-    const newData = [...educationInfo];
-    newData[id].location = e.target.value;
-    setEducationInfo(newData);
-  }
-
-  educationInfo.map((education) => {
-    console.log(education.schoolName);
-  });
+  function removeEducation(e, id) {
+    const newEducation = educationInfo.filter((education) => education.id !== id);
+    setEducationInfo(newEducation);
+  } 
 
   let fullName = `${personalInfo.firstName} ${personalInfo.lastName}`;
 
   const educationElements = educationInfo.map((education) => {
-    console.log(education.id);
     return(
       <EducationInput key={education.id}
       id={education.id}
-      updateSchoolName={updateSchoolName}
-      updateDate={updateDate}
-      updateFocus={updateFocus}
-      updateGPA={updateGPA}
-      updateLocation={updateLocation}
+      removeEducation={removeEducation}
+      updateEduInput={updateEduInput}
       />
     );
   });
 
-  console.log(educationElements);
 
   return (
     <>
