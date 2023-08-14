@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 export default function PersonalInfo( { updateFirst, updateLast, updatePhone, updateEmail } ) {
     return (
         <div className="form-container">
