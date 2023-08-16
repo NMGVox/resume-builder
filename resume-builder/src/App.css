@@ -58,6 +58,12 @@ body {
 }
 
 .resume {
+  min-height:80vh;
+  aspect-ratio: 8.5 / 11;
+  background-color:  white;
   color:black;
   font-size: 24px;
+}
+li {
+  list-style: circle;
 }

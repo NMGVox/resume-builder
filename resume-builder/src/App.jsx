@@ -3,6 +3,7 @@ import Category from './components/category';
 import PersonalInfo from './components/personalInfo';
 import EducationInput from './components/educationInfo';
 import EducationDisplay from './components/educationdisplay';
+import { WorkDisplay, WorkInput } from './components/workInput';
 import './App.css'
 
 
@@ -27,6 +28,39 @@ function App() {
       gpa: '',
       degree: '',
       major: '',
+    },
+  ]);
+
+  const [workInfo, setWorkInfo] = useState([
+    {
+      id: 0,
+      role: '',
+      companyName: '',
+      summary: '',
+      achievements: [{
+        id: 0,
+        text: '',
+      },],
+      startDate: '',
+      endDate: '',
+    },
+  ]);
+
+  const [projects, setProjects] = useState([
+    {
+      id: 0,
+      projectName: '',
+      techStack: '',
+      summary: '',
+      achievements: '',
+    },
+  ]);
+
+  const [skills, setSkills] = useState([
+    {
+      id: 0,
+      skillType: '',
+      skills: [],
     },
   ]);
 
@@ -86,8 +120,6 @@ function App() {
     setEducationInfo(newEducation);
   } 
 
-  let fullName = `${personalInfo.firstName} ${personalInfo.lastName}`;
-
   const educationElements = educationInfo.map((education) => {
     return(
       <EducationInput key={education.id}
@@ -98,6 +130,74 @@ function App() {
     );
   });
 
+  function updateWork(e, id, indexer) {
+    const newData = [...workInfo];
+    newData.map((data) => {
+      if(data.id === id) {
+        data[indexer] = e.target.value;
+      }
+    });
+    setWorkInfo(newData);
+  }
+
+  function updateWorkAchievements(e, id, achievementId) {
+    setWorkInfo(prevInfo => prevInfo.map((work) => {
+      if(work.id === id) {
+        const updatedAchievements = work.achievements.map(achievement => {
+          if(achievement.id === achievementId) {
+            return {...achievement, text: e.target.value};
+          }
+          return achievement;
+        });
+        return {...work, achievements: updatedAchievements};
+      }
+      return work;
+    }))
+  }
+
+  function addWorkAchievement(e, id) {
+    setWorkInfo(prevInfo => prevInfo.map((work) => {
+      if(work.id === id) {
+        const len = work.achievements.length -1;
+        const newAchievement = {
+          id: work.achievements.length > 0 ? work.achievements[len].id + 1 : 0,
+          text: '',
+        }
+        return {...work, achievements: [...work.achievements, newAchievement]};
+      }
+      return work;
+    }))
+  }
+
+  function removeWorkAchievement(e, id, achievementId) {
+    setWorkInfo(prevInfo => prevInfo.map((work) => {
+      if(work.id === id) {
+        const updatedAchievements = work.achievements.filter(achievement => {
+          if(achievement.id !== achievementId) {
+            return {...achievement, text: e.target.value};
+          }
+        });
+        return {...work, achievements: updatedAchievements};
+      }
+      return work;
+    }))
+  }
+
+  const workInputElements = workInfo.map((work) => {
+    return(
+      <WorkInput
+        key={work.id}
+        id={work.id}
+        updateInput={updateWork}
+        updateAchievements = {updateWorkAchievements}
+        addAchievement = {addWorkAchievement}
+        achievementList = {work.achievements}
+        removeAchievement={removeWorkAchievement}
+      />
+    )
+  })
+
+  let fullName = `${personalInfo.firstName} ${personalInfo.lastName}`;
 
   return (
     <>
@@ -127,7 +227,14 @@ function App() {
           }
         </Category>
         
-        <Category categoryName="Work Experience" index={2} isActive={activeIndex === 2} showContent={showContent}/>
+        <Category categoryName="Work Experience" index={2} isActive={activeIndex === 2} showContent={showContent}>
+          {
+            activeIndex === 2 &&
+            <>
+              {workInputElements}
+            </>
+          }
+        </Category>
         
         <Category categoryName="Projects" index={3} isActive={activeIndex === 3} showContent={showContent}/>
       </div>
@@ -136,20 +243,37 @@ function App() {
           <h1>{fullName}</h1>
           <h1>{personalInfo.phoneNumber}</h1>
           <h1>{personalInfo.email}</h1>
-          {educationInfo.map((education) => {
-            return(
-              <EducationDisplay
-                key={education.id}
-                schoolName={education.schoolName}
-                startDate={education.startDate}
-                endDate={education.endDate}
-                major={education.major}
-                degree={education.degree}
-                gpa={education.gpa}
-                location={education.location}
-              />
-            )
-          })}
+          {
+            educationInfo.map((education) => {
+              return(
+                <EducationDisplay
+                  key={education.id}
+                  schoolName={education.schoolName}
+                  startDate={education.startDate}
+                  endDate={education.endDate}
+                  major={education.major}
+                  degree={education.degree}
+                  gpa={education.gpa}
+                  location={education.location}
+                />
+              );
+            })
+          }
+          {
+            workInfo.map((work) => {
+              return (
+                <WorkDisplay
+                  key={work.id}
+                  companyName={work.companyName}
+                  role={work.role}
+                  summary={work.summary}
+                  achievements={work.achievements}
+                  startDate={work.startDate}
+                  endDate={work.endDate}
+                />
+              );
+            })
+          }
         </div>
       </div>
     </>
