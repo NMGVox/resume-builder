@@ -1,4 +1,4 @@
-function WorkInput( { id, showContent, updateInput, updateAchievements, addAchievement, achievementList, removeAchievement } ) {
+function WorkInput( { id, showContent, updateInput, updateAchievements, addAchievement, achievementList, removeAchievement, removeWork } ) {
     return(
         <div className="work-input-container">
             <label htmlFor={`role${id}`}>Role</label><input onChange={(e)=> updateInput(e, id, 'role')} type="text" id={`role${id}`} />
@@ -15,6 +15,7 @@ function WorkInput( { id, showContent, updateInput, updateAchievements, addAchie
             })}
             <label htmlFor={`startDate${id}`}>Start Date</label><input onChange={(e)=> updateInput(e, id, 'startDate')} type="date" id={`startDate${id}`} />
             <label htmlFor={`endDate${id}`}>End Date</label><input onChange={(e)=> updateInput(e, id, 'endDate')} type="date" id={`endDate${id}`} />
+            <button onClick={(e) => removeWork(e, id)}>Remove This Experience</button>
         </div>
     )
 }

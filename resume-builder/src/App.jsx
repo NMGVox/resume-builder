@@ -99,6 +99,7 @@ function App() {
   }
 
   let eduId = educationInfo[educationInfo.length -1].id;
+  let workId = workInfo[workInfo.length -1].id;
 
   function addEducation() {
     const newEducation = 
@@ -111,8 +112,8 @@ function App() {
         gpa: '',
         degree: '',
         major: '',
-      }
-    setEducationInfo((prevInfo) => ([...prevInfo, newEducation]))
+      };
+    setEducationInfo((prevInfo) => ([...prevInfo, newEducation]));
   }
 
   function removeEducation(e, id) {
@@ -169,6 +170,27 @@ function App() {
     }))
   }
 
+  function addWork() {
+    const newWork = {
+      id: workId + 1,
+      role: '',
+      companyName: '',
+      summary: '',
+      achievements: [{
+        id: 0,
+        text: '',
+      },],
+      startDate: '',
+      endDate: '',
+    };
+    setWorkInfo(prevInfo => ([...prevInfo, newWork]));
+  }
+
+  function removeWork(e, id) {
+    const newWork = workInfo.filter((work) => work.id !== id);
+    setWorkInfo(newWork);
+  } 
+
   function removeWorkAchievement(e, id, achievementId) {
     setWorkInfo(prevInfo => prevInfo.map((work) => {
       if(work.id === id) {
@@ -193,6 +215,7 @@ function App() {
         addAchievement = {addWorkAchievement}
         achievementList = {work.achievements}
         removeAchievement={removeWorkAchievement}
+        removeWork={removeWork}
       />
     )
   })
@@ -231,6 +254,7 @@ function App() {
           {
             activeIndex === 2 &&
             <>
+              <button onClick={addWork} className="add-x">Add Work Experience</button>
               {workInputElements}
             </>
           }
