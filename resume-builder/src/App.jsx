@@ -312,7 +312,7 @@ function App() {
     )
   })
 
-  function addSkill(id) {
+  function addSkillCategory(id) {
     const newSkill ={
       id: 0,
       skillType: '',
@@ -320,6 +320,21 @@ function App() {
     };
     setSkills(prevSkills => ([...prevSkills, newSkill]));
   } 
+
+  function removeSkillCategory(e, id) {
+    const newSkills = skills.filter((skill) => (skill.id !== id));
+    setSkills(newSkills);
+  }
+
+  function updateSkillCategory(e, id) {
+    const newData = [...skills];
+    newData.map((data) => {
+      if(data.id === id) {
+        data.skillType = e.target.value;
+      }
+    });
+    setProjects(newData);
+  }
 
   let fullName = `${personalInfo.firstName} ${personalInfo.lastName}`;
 
