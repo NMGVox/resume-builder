@@ -240,23 +240,61 @@ function App() {
   }
 
   function removeProject(e, id) {
-    //
+    const newProjects = projects.filter((project) => project.id !== id);
+    setProjects(newProjects);
   }
 
   function updateProjInput(e, id, indexer) {
-    //
+    const newData = [...projects];
+    newData.map((data) => {
+      if(data.id === id) {
+        data[indexer] = e.target.value;
+      }
+    });
+    setProjects(newData);
   }
 
   function addProjectAchievement(e, id) {
-    //
+    setProjects(prevInfo => prevInfo.map((project) => {
+      if(project.id === id) {
+        const len = project.achievements.length -1;
+        const newAchievement = {
+          id: project.achievements.length > 0 ? project.achievements[len].id + 1 : 0,
+          text: '',
+        }
+        return {...project, achievements: [...project.achievements, newAchievement]};
+      }
+      return project;
+    }))
   }
 
-  function removeProjectAchievement(e, id, achievmentId) {
-    //
+  function removeProjectAchievement(e, id, achievementId) {
+    setProjects(prevInfo => prevInfo.map((project) => {
+      if(project.id === id) {
+        const updatedAchievements = project.achievements.filter(achievement => {
+          if(achievement.id !== achievementId) {
+            return {...achievement, text: e.target.value};
+          }
+        });
+        return {...project, achievements: updatedAchievements};
+      }
+      return project;
+    }))
   }
 
   function updateProjectAchievement(e, id, achievementId) {
-    //
+    setProjects(prevInfo => prevInfo.map((project) => {
+      if(project.id === id) {
+        const updatedAchievements = project.achievements.map(achievement => {
+          if(achievement.id === achievementId) {
+            return {...achievement, text: e.target.value};
+          }
+          return achievement;
+        });
+        return {...project, achievements: updatedAchievements};
+      }
+      return project;
+    }))
   }
 
   const projInputElements = projects.map((project) => {
@@ -273,6 +311,15 @@ function App() {
       />
     )
   })
+
+  function addSkill(id) {
+    const newSkill ={
+      id: 0,
+      skillType: '',
+      skills: [],
+    };
+    setSkills(prevSkills => ([...prevSkills, newSkill]));
+  } 
 
   let fullName = `${personalInfo.firstName} ${personalInfo.lastName}`;
 
@@ -320,6 +367,16 @@ function App() {
             <>
               <button className='add-x' onClick={addProject}>Add Project</button>
               {projInputElements}
+            </>
+          } 
+        </Category>
+
+        <Category categoryName="Projects" index={3} isActive={activeIndex === 4} showContent={showContent}>
+          {
+            activeIndex === 4 && 
+            <>
+              <button className='add-x' onClick={addSkillCategory}>Add Skill Category</button>
+              {skillInputElements}
             </>
           } 
         </Category>

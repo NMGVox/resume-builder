@@ -1,4 +1,4 @@
-function ProjectInput({ id, updateInput, removeProject, updateAchievements, achievementList, removeAchievement }) {
+function ProjectInput({ id, updateInput, removeProject, achievementList, removeAchievement, updateAchievement, addAchievement}) {
     return(
         <div className="inputWrapper">
             <label htmlFor={`projectName${id}`}>Project Name: </label><input type="text" />
@@ -8,14 +8,17 @@ function ProjectInput({ id, updateInput, removeProject, updateAchievements, achi
             {achievementList.map(achievement => {
                 return (
                     <>
-                        <input key={achievement.id} onChange={(e) => updateAchievements(e, id, achievement.id)} type="text"/>
-                        <button onClick={(e) => removeAchievement(e, id, achievement.id)}>Remove</button> 
+                        <input key={achievement.id} onChange={(e) => updateAchievement(e, id, achievement.id)} type="text"/>
+                        <button onClick={(e) => removeAchievement(e, id, achievement.id)}>X</button> 
                     </>   
                 )
             })}
-            <button onClick={removeProject}></button>
+            <button onClick={(e) => addAchievement(e, id)}>Add Achievement</button>           
+            <button onClick={(e) => removeProject(e, id)}>Remove Project</button>
         </div>
     )
 }
+
+//hide removal button when there is only one project
 
 export { ProjectInput }
