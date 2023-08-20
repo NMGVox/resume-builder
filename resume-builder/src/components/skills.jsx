@@ -13,6 +13,7 @@ function SkillInput( { id, updateSkillType, removeSkillType, updateSkill, remove
                     );
                 })
             }
+            <button onClick={(e) => addSkill(e, id)}>Add Skill to type</button>
         </div>
     )
 }

@@ -65,7 +65,10 @@ function App() {
     {
       id: 0,
       skillType: '',
-      skills: [],
+      skills: [{
+        id:0,
+        text:'',
+      },],
     },
   ]);
 
@@ -314,11 +317,10 @@ function App() {
   })
 
   function addSkillType() {
-    const newSkill ={
-      id: 0,
-      skillType: '',
-      skills: [],
-    };
+    const newSkill =[{
+      id:0,
+      text:'',
+    },];
     setSkills(prevSkills => ([...prevSkills, newSkill]));
   } 
 
@@ -337,6 +339,20 @@ function App() {
     setProjects(newData);
   }
 
+  function addSkill(e, id) {
+    setSkills(prevInfo => prevInfo.map((skillType) => {
+      if(skillType.id === id) {
+        const len = skillType.skills.length -1;
+        const newSkill = {
+          id: skillType.skills.length > 0 ? skillType.skills[len].id + 1 : 0,
+          text: '',
+        }
+        return {...skillType, skills: [...skillType.skills, newSkill]};
+      }
+      return skillType;
+    }))
+  }
+
   const skillInputElements = skills.map((skill) => {
     return(
       <SkillInput
@@ -345,6 +361,7 @@ function App() {
         updateSkillType={updateSkillType}
         removeSkillType={removeSkillType}
         skillList={skill.skills}
+        addSkill={addSkill}
       />
     )
   })
@@ -399,7 +416,7 @@ function App() {
           } 
         </Category>
 
-        <Category categoryName="Skills" index={3} isActive={activeIndex === 4} showContent={showContent}>
+        <Category categoryName="Skills" index={4} isActive={activeIndex === 4} showContent={showContent}>
           {
             activeIndex === 4 && 
             <>
