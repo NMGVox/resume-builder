@@ -8,7 +8,7 @@ function WorkInput( { id, showContent, updateInput, updateAchievements, addAchie
             {achievementList.map(achievement => {
                 return (
                     <>
-                        <input key={achievement.id} placeholder={achievement.id} onChange={(e) => updateAchievements(e, id, achievement.id)} type="text" id={`achievments${id}`} />
+                        <input key={achievement.id} onChange={(e) => updateAchievements(e, id, achievement.id)} type="text" id={`achievments${id}`} />
                         <button onClick={(e) => removeAchievement(e, id, achievement.id)}>Remove</button> 
                     </>   
                 )

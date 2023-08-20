@@ -4,6 +4,7 @@ import PersonalInfo from './components/personalInfo';
 import EducationInput from './components/educationInfo';
 import EducationDisplay from './components/educationdisplay';
 import { WorkDisplay, WorkInput } from './components/workInput';
+import { ProjectInput } from './components/projects';
 import './App.css'
 
 
@@ -51,8 +52,11 @@ function App() {
       id: 0,
       projectName: '',
       techStack: '',
-      summary: '',
-      achievements: '',
+      link: '',
+      achievements: [{
+        id: 0,
+        text: '',
+      },],
     },
   ]);
 
@@ -100,6 +104,7 @@ function App() {
 
   let eduId = educationInfo[educationInfo.length -1].id;
   let workId = workInfo[workInfo.length -1].id;
+  let projId = projects[projects.length -1].id;
 
   function addEducation() {
     const newEducation = 
@@ -220,6 +225,55 @@ function App() {
     )
   })
 
+  function addProject(e, id) {
+    const newProject = {
+      id: projId+1,
+      projectName: '',
+      techStack: '',
+      link: '',
+      achievements: [{
+        id: 0,
+        text: '',
+      },],
+    };
+    setProjects(prevProjects => ([...prevProjects, newProject]));
+  }
+
+  function removeProject(e, id) {
+    //
+  }
+
+  function updateProjInput(e, id, indexer) {
+    //
+  }
+
+  function addProjectAchievement(e, id) {
+    //
+  }
+
+  function removeProjectAchievement(e, id, achievmentId) {
+    //
+  }
+
+  function updateProjectAchievement(e, id, achievementId) {
+    //
+  }
+
+  const projInputElements = projects.map((project) => {
+    return(
+      <ProjectInput
+        key={project.id}
+        id={project.id}
+        updateInput={updateProjInput}
+        achievementList={project.achievements}
+        addAchievement={addProjectAchievement}
+        removeAchievement={removeProjectAchievement}
+        updateAchievement={updateProjectAchievement}
+        removeProject={removeProject}
+      />
+    )
+  })
+
   let fullName = `${personalInfo.firstName} ${personalInfo.lastName}`;
 
   return (
@@ -260,7 +314,15 @@ function App() {
           }
         </Category>
         
-        <Category categoryName="Projects" index={3} isActive={activeIndex === 3} showContent={showContent}/>
+        <Category categoryName="Projects" index={3} isActive={activeIndex === 3} showContent={showContent}>
+          {
+            activeIndex === 3 && 
+            <>
+              <button className='add-x' onClick={addProject}>Add Project</button>
+              {projInputElements}
+            </>
+          } 
+        </Category>
       </div>
       <div className="resume-display">
         <div className="resume">
