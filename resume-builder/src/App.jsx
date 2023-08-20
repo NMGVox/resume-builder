@@ -4,8 +4,8 @@ import PersonalInfo from './components/personalInfo';
 import EducationInput from './components/educationInfo';
 import EducationDisplay from './components/educationdisplay';
 import { WorkDisplay, WorkInput } from './components/workInput';
-import { ProjectInput } from './components/projects';
-import { SkillInput } from './components/skills';
+import { ProjectDisplay, ProjectInput } from './components/projects';
+import { SkillDisplay, SkillInput } from './components/skills';
 import './App.css'
 
 
@@ -203,11 +203,7 @@ function App() {
   function removeWorkAchievement(e, id, achievementId) {
     setWorkInfo(prevInfo => prevInfo.map((work) => {
       if(work.id === id) {
-        const updatedAchievements = work.achievements.filter(achievement => {
-          if(achievement.id !== achievementId) {
-            return {...achievement, text: e.target.value};
-          }
-        });
+        const updatedAchievements = work.achievements.filter(achievement => achievement.id !== achievementId);
         return {...work, achievements: updatedAchievements};
       }
       return work;
@@ -275,11 +271,7 @@ function App() {
   function removeProjectAchievement(e, id, achievementId) {
     setProjects(prevInfo => prevInfo.map((project) => {
       if(project.id === id) {
-        const updatedAchievements = project.achievements.filter(achievement => {
-          if(achievement.id !== achievementId) {
-            return {...achievement, text: e.target.value};
-          }
-        });
+        const updatedAchievements = project.achievements.filter(achievement => achievement.id !== achievementId);
         return {...project, achievements: updatedAchievements};
       }
       return project;
@@ -317,10 +309,13 @@ function App() {
   })
 
   function addSkillType() {
-    const newSkill =[{
+    const newSkill = {
       id:0,
-      text:'',
-    },];
+      skills :[{
+        id:0,
+        text: '',
+      },],
+    };
     setSkills(prevSkills => ([...prevSkills, newSkill]));
   } 
 
@@ -353,6 +348,31 @@ function App() {
     }))
   }
 
+  function removeSkill(e, id, skillId) {
+    setSkills(prevInfo => prevInfo.map((skillType) => {
+      if(skillType.id === id) {
+        const updatedSkills = skillType.skills.filter(skill => skill.id !== skillId)
+        return {...skillType, skills: updatedSkills};
+      }
+      return skillType;
+    }))
+  }
+
+  function updateSkill(e, id, skillId) {
+    setSkills(prevInfo => prevInfo.map((skillType) => {
+      if(skillType.id === id) {
+        const updateSkill = skillType.skills.map(skill => {
+          if(skill.id === skillId) {
+            return {...skill, text: e.target.value};
+          }
+          return skill;
+        });
+        return {...skillType, skills: updateSkill};
+      }
+      return skillType;
+    }))
+  }
+
   const skillInputElements = skills.map((skill) => {
     return(
       <SkillInput
@@ -362,6 +382,8 @@ function App() {
         removeSkillType={removeSkillType}
         skillList={skill.skills}
         addSkill={addSkill}
+        removeSkill={removeSkill}
+        updateSkill={updateSkill}
       />
     )
   })
@@ -462,9 +484,34 @@ function App() {
               );
             })
           }
+          {
+            projects.map((project) => {
+              return(
+                <ProjectDisplay
+                  key={project.id}
+                  projectName={project.projectName}
+                  techStack={project.techStack}
+                  projLink={project.link}
+                  projAchievements={project.achievements}
+                />
+              )
+            })
+          }
+          {
+            skills.map((skill) => {
+              return(
+                <SkillDisplay 
+                  key={skill.id}
+                  skillType={skill.skillType}
+                  skills={skill.skills}
+                />
+              )
+            })
+          }
         </div>
       </div>
     </>
   );
 }
+
 export default App
