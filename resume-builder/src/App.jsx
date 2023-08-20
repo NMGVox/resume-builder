@@ -5,6 +5,7 @@ import EducationInput from './components/educationInfo';
 import EducationDisplay from './components/educationdisplay';
 import { WorkDisplay, WorkInput } from './components/workInput';
 import { ProjectInput } from './components/projects';
+import { SkillInput } from './components/skills';
 import './App.css'
 
 
@@ -225,7 +226,7 @@ function App() {
     )
   })
 
-  function addProject(e, id) {
+  function addProject() {
     const newProject = {
       id: projId+1,
       projectName: '',
@@ -312,7 +313,7 @@ function App() {
     )
   })
 
-  function addSkillCategory(id) {
+  function addSkillType() {
     const newSkill ={
       id: 0,
       skillType: '',
@@ -321,12 +322,12 @@ function App() {
     setSkills(prevSkills => ([...prevSkills, newSkill]));
   } 
 
-  function removeSkillCategory(e, id) {
+  function removeSkillType(e, id) {
     const newSkills = skills.filter((skill) => (skill.id !== id));
     setSkills(newSkills);
   }
 
-  function updateSkillCategory(e, id) {
+  function updateSkillType(e, id) {
     const newData = [...skills];
     newData.map((data) => {
       if(data.id === id) {
@@ -335,6 +336,18 @@ function App() {
     });
     setProjects(newData);
   }
+
+  const skillInputElements = skills.map((skill) => {
+    return(
+      <SkillInput
+        key={skill.id}
+        id={skill.id}
+        updateSkillType={updateSkillType}
+        removeSkillType={removeSkillType}
+        skillList={skill.skills}
+      />
+    )
+  })
 
   let fullName = `${personalInfo.firstName} ${personalInfo.lastName}`;
 
@@ -386,11 +399,11 @@ function App() {
           } 
         </Category>
 
-        <Category categoryName="Projects" index={3} isActive={activeIndex === 4} showContent={showContent}>
+        <Category categoryName="Skills" index={3} isActive={activeIndex === 4} showContent={showContent}>
           {
             activeIndex === 4 && 
             <>
-              <button className='add-x' onClick={addSkillCategory}>Add Skill Category</button>
+              <button className='add-x' onClick={addSkillType}>Add Skill Category</button>
               {skillInputElements}
             </>
           } 
