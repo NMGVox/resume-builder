@@ -456,9 +456,11 @@ function App() {
       </div>
       <div className="resume-display">
         <div className="resume">
-          <h1>{fullName}</h1>
-          <h1>{personalInfo.phoneNumber}</h1>
-          <h1>{personalInfo.email}</h1>
+          <h2 className='fullName' >{fullName}</h2>
+          <div className="personal-group">
+            <h4>{personalInfo.phoneNumber}</h4>
+            <h4>{personalInfo.email}</h4>
+          </div>
           {
             educationInfo.map((education) => {
               return(

@@ -33,7 +33,6 @@ body {
   gap:1vh;
 }
 
-
 .category-header {
   font-size: 2vw;
   border-bottom: 2px solid white;
@@ -43,6 +42,16 @@ body {
   width: 2vw;
   height: auto;
   filter: invert(100%) sepia(0%) saturate(7470%) hue-rotate(62deg) brightness(105%) contrast(109%);
+}
+
+.inputWrapper {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  gap: 5px;
+}
+
+.inputWrapper label {
+  text-align: right;
 }
 
 .resume-display {
@@ -66,9 +75,27 @@ body {
   background-color:  white;
   color:black;
   font-size: 24px;
+  box-sizing: border-box;
+  padding: 1.5vh;
 }
 
 
 li {
   list-style: circle;
+}
+
+.fullName {
+  text-align: center;
+  font-size: 2vw;
+}
+
+.personal-group {
+  width:100%;
+  text-align: center;
+  display:flex;
+  justify-content: center;
+}
+
+.personal-group h4::after {
+  content: ' | \00a0';
 }
