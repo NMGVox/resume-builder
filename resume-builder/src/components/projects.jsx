@@ -1,9 +1,9 @@
-function ProjectInput({ id, updateInput, removeProject, achievementList, removeAchievement, updateAchievement, addAchievement}) {
+function ProjectInput({ id, updateInput, removeProject, achievementList, removeAchievement, updateAchievement, addAchievement, vals}) {
     return(
         <div className="inputWrapper">
-            <label htmlFor={`projectName${id}`}>Project Name: </label><input onChange={(e) => updateInput(e, id, 'projectName')} type="text" />
-            <label htmlFor={`techStack${id}`}>Tech Stack: </label><input onChange={(e) => updateInput(e, id, 'techStack')} type="text" />
-            <label htmlFor={`link${id}`}>Live link: </label><input onChange={(e) => updateInput(e, id, 'link')} type="text" />
+            <label htmlFor={`projectName${id}`}>Project Name: </label><input onChange={(e) => updateInput(e, id, 'projectName')} value={vals.projectName} type="text" />
+            <label htmlFor={`techStack${id}`}>Tech Stack: </label><input onChange={(e) => updateInput(e, id, 'techStack')} value={vals.techStack} type="text" />
+            <label htmlFor={`link${id}`}>Live link: </label><input onChange={(e) => updateInput(e, id, 'link')} value={vals.link} type="text" />
             <label>Achievements: </label>
             {achievementList.map(achievement => {
                 return (

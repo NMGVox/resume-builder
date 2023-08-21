@@ -1,14 +1,12 @@
 body {
-  display: flex;
-  width:100vw;
-  height:100vh;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 #root {
   display: flex;
   width:100vw;
-  height:100vh;
+  height:auto;
 }
 
 .title {
@@ -17,8 +15,10 @@ body {
 
 .input-container {
   flex-basis: 28%;
-  background-color: bisque;
-  min-height: 50vh;
+  background-color: #1e3a8a;
+  color:white;
+  height: 100vh;
+  overflow-y: auto;
   border-right: 2px solid black;
 }
 
@@ -36,20 +36,23 @@ body {
 
 .category-header {
   font-size: 2vw;
+  border-bottom: 2px solid white;
 }
 
 .collapse {
   width: 2vw;
-  height:auto;
+  height: auto;
+  filter: invert(100%) sepia(0%) saturate(7470%) hue-rotate(62deg) brightness(105%) contrast(109%);
 }
 
 .resume-display {
   flex: 1 0 auto;
-  background-color: rgb(202, 202, 202);
+  background-color: #bae6fd;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height:auto;
+  padding: 2vh;
 }
 
 .resume-display h1 {
@@ -58,12 +61,14 @@ body {
 }
 
 .resume {
-  min-height:80vh;
+  height: 120vh;
   aspect-ratio: 8.5 / 11;
   background-color:  white;
   color:black;
   font-size: 24px;
 }
+
+
 li {
   list-style: circle;
 }

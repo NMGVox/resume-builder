@@ -1,7 +1,7 @@
-function SkillInput( { id, updateSkillType, removeSkillType, updateSkill, removeSkill, addSkill, skillList } ) {
+function SkillInput( { id, updateSkillType, removeSkillType, updateSkill, removeSkill, addSkill, skillList, vals } ) {
     return (
         <div className="inputWrapper">
-            <label htmlFor="">Skill Type</label><input type="text"></input>
+            <label htmlFor="">Skill Type</label><input onChange={(e) => updateSkillType(e, id)} value={vals.skillType} type="text"></input>
             <label htmlFor="">Skills</label>     
             {
                 skillList.map(skill => {

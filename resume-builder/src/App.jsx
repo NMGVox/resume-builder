@@ -109,6 +109,7 @@ function App() {
   let eduId = educationInfo[educationInfo.length -1].id;
   let workId = workInfo[workInfo.length -1].id;
   let projId = projects[projects.length -1].id;
+  let skillId = skills[skills.length - 1].id;
 
   function addEducation() {
     const newEducation = 
@@ -133,9 +134,10 @@ function App() {
   const educationElements = educationInfo.map((education) => {
     return(
       <EducationInput key={education.id}
-      id={education.id}
-      removeEducation={removeEducation}
-      updateEduInput={updateEduInput}
+        id={education.id}
+        removeEducation={removeEducation}
+        updateEduInput={updateEduInput}
+        vals={education}
       />
     );
   });
@@ -221,6 +223,7 @@ function App() {
         achievementList = {work.achievements}
         removeAchievement={removeWorkAchievement}
         removeWork={removeWork}
+        vals={work}
       />
     )
   })
@@ -304,13 +307,14 @@ function App() {
         removeAchievement={removeProjectAchievement}
         updateAchievement={updateProjectAchievement}
         removeProject={removeProject}
+        vals={project}
       />
     )
   })
 
   function addSkillType() {
     const newSkill = {
-      id:0,
+      id: skillId + 1,
       skills :[{
         id:0,
         text: '',
@@ -331,7 +335,7 @@ function App() {
         data.skillType = e.target.value;
       }
     });
-    setProjects(newData);
+    setSkills(newData);
   }
 
   function addSkill(e, id) {
@@ -384,6 +388,7 @@ function App() {
         addSkill={addSkill}
         removeSkill={removeSkill}
         updateSkill={updateSkill}
+        vals={skill}
       />
     )
   })
@@ -404,6 +409,7 @@ function App() {
              updateLast={updateLastName}
              updatePhone={updatePhone}
              updateEmail={updateEmail}
+             vals={personalInfo}
             /> 
           }
         </Category>

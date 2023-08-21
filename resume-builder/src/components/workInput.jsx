@@ -1,9 +1,9 @@
-function WorkInput( { id, showContent, updateInput, updateAchievements, addAchievement, achievementList, removeAchievement, removeWork } ) {
+function WorkInput( { id, showContent, updateInput, updateAchievements, addAchievement, achievementList, removeAchievement, removeWork, vals } ) {
     return(
-        <div className="work-input-container">
-            <label htmlFor={`role${id}`}>Role</label><input onChange={(e)=> updateInput(e, id, 'role')} type="text" id={`role${id}`} />
-            <label htmlFor={`company${id}`}>Company</label><input onChange={(e)=> updateInput(e, id, 'companyName')} type="text" id={`company${id}`} />
-            <label htmlFor={`summary${id}`}>Summary</label><textarea onChange={(e)=> updateInput(e, id, 'summary')} id={`summary${id}`} cols="30" rows="10"></textarea>
+        <div className="inputWrapper">
+            <label htmlFor={`role${id}`}>Role</label><input onChange={(e)=> updateInput(e, id, 'role')} value={vals.role} type="text" id={`role${id}`} />
+            <label htmlFor={`company${id}`}>Company</label><input onChange={(e)=> updateInput(e, id, 'companyName')} value={vals.companyName} type="text" id={`company${id}`} />
+            <label htmlFor={`summary${id}`}>Summary</label><textarea onChange={(e)=> updateInput(e, id, 'summary')} id={`summary${id}`} value={vals.summary} cols="30" rows="10"></textarea>
             <label htmlFor={`achievments${id}`}>Achievements <button onClick={(e) => addAchievement(e, id)}>+</button></label>
             {achievementList.map(achievement => {
                 return (
@@ -13,8 +13,8 @@ function WorkInput( { id, showContent, updateInput, updateAchievements, addAchie
                     </>   
                 )
             })}
-            <label htmlFor={`startDate${id}`}>Start Date</label><input onChange={(e)=> updateInput(e, id, 'startDate')} type="date" id={`startDate${id}`} />
-            <label htmlFor={`endDate${id}`}>End Date</label><input onChange={(e)=> updateInput(e, id, 'endDate')} type="date" id={`endDate${id}`} />
+            <label htmlFor={`startDate${id}`}>Start Date</label><input onChange={(e)=> updateInput(e, id, 'startDate')} value={vals.startDate} type="date" id={`startDate${id}`} />
+            <label htmlFor={`endDate${id}`}>End Date</label><input onChange={(e)=> updateInput(e, id, 'endDate')} value={vals.endDate} type="date" id={`endDate${id}`} />
             <button onClick={(e) => removeWork(e, id)}>Remove This Experience</button>
         </div>
     )
