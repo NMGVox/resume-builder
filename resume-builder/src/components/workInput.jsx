@@ -23,7 +23,7 @@ function WorkInput( { id, showContent, updateInput, updateAchievements, addAchie
 function WorkDisplay ( {role, companyName, summary, achievements, startDate, endDate} ) {
     return(
         <div className="work-wrapper">
-            <h2>{role}</h2>
+            <h2 className="mainTitle">{role}</h2>
             <h2>{companyName}</h2>
             <h2>{summary}</h2>
             <ul>

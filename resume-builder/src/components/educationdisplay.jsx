@@ -1,13 +1,18 @@
 export default function EducationDisplay( {schoolName, startDate, endDate, major, degree, gpa, location} ) {
     return(
-        <>
-            <h2>{schoolName}</h2>
-            <h2>{startDate}</h2>
-            <h2>{endDate}</h2>
-            <h2>{major}</h2>
-            <h2>{degree}</h2>
-            <h2>{gpa}</h2>
-            <h2>{location}</h2>
+        <div className="sectionChildWrapper">
+            <div className="resumePairMain">
+                <h2 className="mainTitle">{schoolName}</h2>
+                <h2 className="mainTitleRightAlign">{location}</h2>
+            </div>
+            <div className="resumeSecondaryPair">
+                <span className="educationDetails">
+                    <h2>{degree}{major && `, ${major}`}{gpa && ` | ${gpa}`}</h2>
+                </span>
+                <span className="dateWrapper">
+                    <h2>{startDate} - {endDate}</h2>
+                </span>
+            </div>
         </>
     )
 }

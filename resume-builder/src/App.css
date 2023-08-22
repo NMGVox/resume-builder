@@ -64,11 +64,6 @@ body {
   padding: 2vh;
 }
 
-.resume-display h1 {
-  color:black;
-  font-size: 24px;
-}
-
 .resume {
   height: 120vh;
   aspect-ratio: 8.5 / 11;
@@ -76,7 +71,7 @@ body {
   color:black;
   font-size: 24px;
   box-sizing: border-box;
-  padding: 1.5vh;
+  padding: 2vh 1.5vw;
 }
 
 
@@ -94,8 +89,62 @@ li {
   text-align: center;
   display:flex;
   justify-content: center;
+  font-size: 1vw;
 }
 
 .personal-group h4::after {
   content: ' | \00a0';
+}
+
+.resumeSection {
+  width:100%;
+  height:auto;
+  margin-bottom: 1.2vh;
+}
+
+.resumeSectionHeader {
+  width:100%;
+  text-align: left;
+  border-bottom: 2px solid black;
+  padding-bottom: 4px;
+  font-size: 1.4vw;
+}
+
+.sectionChildWrapper {
+  margin-bottom: 1vh;
+}
+
+.resumePairMain {
+  width: 100%;
+  display: flex;
+}
+
+.mainTitle {
+  font-weight: bold;
+  font-size: 1.1vw;
+  flex-basis: 70%;
+}
+
+.mainTitleRightAlign {
+  width: 100%;
+  font-size: 1.1vw;
+  text-align: right;
+}
+
+.resumeSecondaryPair {
+  display:flex;
+  width:100%;
+}
+
+.educationDetails {
+  font-style: italic;
+  font-size: .9vw;
+  flex-basis: 100%;
+}
+
+.dateWrapper {
+  width:100%;
+  font-size: .9vw;
+  font-style: italic;
+  text-align: right;
 }

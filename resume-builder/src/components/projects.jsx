@@ -22,7 +22,7 @@ function ProjectInput({ id, updateInput, removeProject, achievementList, removeA
 function ProjectDisplay( { projectName, techStack, projLink, projAchievements } ) { 
     return (
         <div className="project">
-            <h2>{projectName}</h2>
+            <h2 className="mainTitle">{projectName}</h2>
             <h2>{techStack}</h2>
             <h2>{projLink}</h2>
             <ul>

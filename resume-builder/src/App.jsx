@@ -461,61 +461,73 @@ function App() {
             <h4>{personalInfo.phoneNumber}</h4>
             <h4>{personalInfo.email}</h4>
           </div>
-          {
-            educationInfo.map((education) => {
-              return(
-                <EducationDisplay
-                  key={education.id}
-                  schoolName={education.schoolName}
-                  startDate={education.startDate}
-                  endDate={education.endDate}
-                  major={education.major}
-                  degree={education.degree}
-                  gpa={education.gpa}
-                  location={education.location}
-                />
-              );
-            })
-          }
-          {
-            workInfo.map((work) => {
-              return (
-                <WorkDisplay
-                  key={work.id}
-                  companyName={work.companyName}
-                  role={work.role}
-                  summary={work.summary}
-                  achievements={work.achievements}
-                  startDate={work.startDate}
-                  endDate={work.endDate}
-                />
-              );
-            })
-          }
-          {
-            projects.map((project) => {
-              return(
-                <ProjectDisplay
-                  key={project.id}
-                  projectName={project.projectName}
-                  techStack={project.techStack}
-                  projLink={project.link}
-                  projAchievements={project.achievements}
-                />
-              )
-            })
-          }
-          {
-            skills.map((skill) => {
-              return(
-                <SkillDisplay 
-                  key={skill.id}
-                  skillType={skill.skillType}
-                  skills={skill.skills}
-                />
-              )
-            })
-          }
+          <div className="resumeSection">
+            <h1 className='resumeSectionHeader'>Education</h1>
+            {
+              educationInfo.map((education) => {
+                return(
+                  <EducationDisplay
+                    key={education.id}
+                    schoolName={education.schoolName}
+                    startDate={education.startDate}
+                    endDate={education.endDate}
+                    major={education.major}
+                    degree={education.degree}
+                    gpa={education.gpa}
+                    location={education.location}
+                  />
+                );
+              })
+            }
+          </div>
+          <div className="resumeSection">
+          <h1 className='resumeSectionHeader'>Work Experience</h1>
+            {
+              workInfo.map((work) => {
+                return (
+                  <WorkDisplay
+                    key={work.id}
+                    companyName={work.companyName}
+                    role={work.role}
+                    summary={work.summary}
+                    achievements={work.achievements}
+                    startDate={work.startDate}
+                    endDate={work.endDate}
+                  />
+                );
+              })
+            }
+          </div>
+          <div className="resumeSection">
+          <h1 className='resumeSectionHeader'>Projects</h1>
+            {
+              projects.map((project) => {
+                return(
+                  <ProjectDisplay
+                    key={project.id}
+                    projectName={project.projectName}
+                    techStack={project.techStack}
+                    projLink={project.link}
+                    projAchievements={project.achievements}
+                  />
+                )
+              })
+            }
+          </div>
+          <div className="resumeSection">
+          <h1 className='resumeSectionHeader'>Skills</h1>
+            {
+              skills.map((skill) => {
+                return(
+                  <SkillDisplay
+                    key={skill.id}
+                    skillType={skill.skillType}
+                    skills={skill.skills}
+                  />
+                )
+              })
+            }
+          </div>
         </div>
       </div>
     </>
