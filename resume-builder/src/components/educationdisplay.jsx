@@ -13,6 +13,6 @@ export default function EducationDisplay( {schoolName, startDate, endDate, major
                     <h2>{startDate} - {endDate}</h2>
                 </span>
             </div>
-        </>
+        </div>
     )
 }

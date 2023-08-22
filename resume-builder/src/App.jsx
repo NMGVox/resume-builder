@@ -38,7 +38,7 @@ function App() {
       id: 0,
       role: '',
       companyName: '',
-      summary: '',
+      location: '',
       achievements: [{
         id: 0,
         text: '',
@@ -186,7 +186,7 @@ function App() {
       id: workId + 1,
       role: '',
       companyName: '',
-      summary: '',
+      location: '',
       achievements: [{
         id: 0,
         text: '',
@@ -489,7 +489,7 @@ function App() {
                     key={work.id}
                     companyName={work.companyName}
                     role={work.role}
-                    summary={work.summary}
+                    location={work.location}
                     achievements={work.achievements}
                     startDate={work.startDate}
                     endDate={work.endDate}

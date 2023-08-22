@@ -3,7 +3,7 @@ function WorkInput( { id, showContent, updateInput, updateAchievements, addAchie
         <div className="inputWrapper">
             <label htmlFor={`role${id}`}>Role</label><input onChange={(e)=> updateInput(e, id, 'role')} value={vals.role} type="text" id={`role${id}`} />
             <label htmlFor={`company${id}`}>Company</label><input onChange={(e)=> updateInput(e, id, 'companyName')} value={vals.companyName} type="text" id={`company${id}`} />
-            <label htmlFor={`summary${id}`}>Summary</label><textarea onChange={(e)=> updateInput(e, id, 'summary')} id={`summary${id}`} value={vals.summary} cols="30" rows="10"></textarea>
+            <label htmlFor={`location${id}`}>Location</label><input type="text" onChange={(e)=> updateInput(e, id, 'location')} id={`location${id}`} value={vals.location}></input>
             <label htmlFor={`achievments${id}`}>Achievements <button onClick={(e) => addAchievement(e, id)}>+</button></label>
             {achievementList.map(achievement => {
                 return (
@@ -20,19 +20,24 @@ function WorkInput( { id, showContent, updateInput, updateAchievements, addAchie
     )
 }
 
-function WorkDisplay ( {role, companyName, summary, achievements, startDate, endDate} ) {
+function WorkDisplay ( {role, companyName, location, achievements, startDate, endDate} ) {
     return(
-        <div className="work-wrapper">
-            <h2 className="mainTitle">{role}</h2>
-            <h2>{companyName}</h2>
-            <h2>{summary}</h2>
-            <ul>
-            {achievements.map(achievement => {
-               return <li key={achievement.id}>{achievement.text}</li>
-            })}
+        <div className="sectionChildWrapper">
+            <div className="resumePairMain">
+                <h2 className="mainTitle">{role}</h2>
+                <span className="dateWrapper">
+                        <h2>{startDate} - {endDate}</h2>
+                </span>
+            </div>
+            <div className="resumeSecondaryPair">
+                <h2 className="secondaryTextLeft">{companyName}</h2>
+                <h2 className="secondaryTextRight">{location}</h2>
+            </div>
+            <ul className="achievementList">
+                {achievements.map(achievement => {
+                return <li key={achievement.id}>{achievement.text}</li>
+                })}
             </ul>
-            <h2>{startDate}</h2>
-            <h2>{endDate}</h2>
         </div>
     )
 }

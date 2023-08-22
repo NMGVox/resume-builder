@@ -74,11 +74,6 @@ body {
   padding: 2vh 1.5vw;
 }
 
-
-li {
-  list-style: circle;
-}
-
 .fullName {
   text-align: center;
   font-size: 2vw;
@@ -111,7 +106,8 @@ li {
 }
 
 .sectionChildWrapper {
-  margin-bottom: 1vh;
+  margin-bottom: .6vh;
+  padding: 0 8px;
 }
 
 .resumePairMain {
@@ -147,4 +143,31 @@ li {
   font-size: .9vw;
   font-style: italic;
   text-align: right;
+}
+
+.secondaryTextLeft,
+.secondaryTextRight {
+  font-style:italic;
+  font-size: .9vw;
+}
+
+.secondaryTextLeft {
+  flex-basis: 70%;
+}
+
+.secondaryTextRight {
+  text-align: right;
+  width:100%;
+}
+
+.achievementList {
+  font-size: .8vw;
+  display: flex;
+  flex-direction: column;
+  gap: .4vh;
+  padding: 0vh 24px;
+}
+
+.achievementList li {
+  list-style: disc;
 }
