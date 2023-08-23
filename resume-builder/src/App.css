@@ -194,3 +194,7 @@ body {
 .achievementList li {
   list-style: disc;
 }
+
+.skillLine {
+  display:flex
+}

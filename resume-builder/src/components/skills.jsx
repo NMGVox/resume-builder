@@ -21,12 +21,14 @@ function SkillInput( { id, updateSkillType, removeSkillType, updateSkill, remove
 function SkillDisplay({ skillType, skills }) {
     return(
         <div className="skillWrapper">
-            <h2>{skillType}</h2>
-            {
-                skills.map((skill) => {
-                    return <li key={skill.id}>{skill.text}</li>
-                })
-            }
+            <div className="skillLine">
+                <h2>{skillType && `${skillType}:  `}</h2>
+                {
+                    skills.map((skill) => {
+                        return <p className="skill" key={skill.id}>{skill.id !== 0 && ', '}{skill.text && `${skill.text}`}</p>
+                    })
+                }
+            </div>
         </div>
     )
 }
