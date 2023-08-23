@@ -21,11 +21,11 @@ function ProjectInput({ id, updateInput, removeProject, achievementList, removeA
 
 function ProjectDisplay( { projectName, techStack, projLink, projAchievements } ) { 
     return (
-        <div className="project">
-            <h2 className="mainTitle">{projectName}</h2>
-            <h2>{techStack}</h2>
-            <h2>{projLink}</h2>
-            <ul>
+        <div className="sectionChildWrapper">
+            <div className="resumePairMain">
+                <h2 className="projTitle"><a href={projLink}>{projectName}</a> {techStack && ` | ${techStack}`}</h2>
+            </div>
+            <ul className="achievementList">
                 {
                     projAchievements.map((achievement) => {
                         return <li key={achievement.id}>{achievement.text}</li>

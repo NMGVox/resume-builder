@@ -13,8 +13,8 @@ function WorkInput( { id, showContent, updateInput, updateAchievements, addAchie
                     </>   
                 )
             })}
-            <label htmlFor={`startDate${id}`}>Start Date</label><input onChange={(e)=> updateInput(e, id, 'startDate')} value={vals.startDate} type="date" id={`startDate${id}`} />
-            <label htmlFor={`endDate${id}`}>End Date</label><input onChange={(e)=> updateInput(e, id, 'endDate')} value={vals.endDate} type="date" id={`endDate${id}`} />
+            <label htmlFor={`startDate${id}`}>Start Date</label><input onChange={(e)=> updateInput(e, id, 'startDate')} value={vals.startDate} type="text" id={`startDate${id}`} />
+            <label htmlFor={`endDate${id}`}>End Date</label><input onChange={(e)=> updateInput(e, id, 'endDate')} value={vals.endDate} type="text" id={`endDate${id}`} />
             <button onClick={(e) => removeWork(e, id)}>Remove This Experience</button>
         </div>
     )

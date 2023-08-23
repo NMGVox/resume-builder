@@ -418,8 +418,8 @@ function App() {
           {
             activeIndex === 1 &&
               <>
-                <button onClick={addEducation} className="add-x">Add Education</button>
                 {educationElements}
+                <button onClick={addEducation} className="add-x">Add Education</button>
               </>
           }
         </Category>
@@ -428,8 +428,8 @@ function App() {
           {
             activeIndex === 2 &&
             <>
-              <button onClick={addWork} className="add-x">Add Work Experience</button>
               {workInputElements}
+              <button onClick={addWork} className="add-x">Add Work Experience</button>
             </>
           }
         </Category>
@@ -438,8 +438,8 @@ function App() {
           {
             activeIndex === 3 && 
             <>
-              <button className='add-x' onClick={addProject}>Add Project</button>
               {projInputElements}
+              <button className='add-x' onClick={addProject}>Add Project</button>
             </>
           } 
         </Category>
@@ -448,8 +448,8 @@ function App() {
           {
             activeIndex === 4 && 
             <>
-              <button className='add-x' onClick={addSkillType}>Add Skill Category</button>
               {skillInputElements}
+              <button className='add-x' onClick={addSkillType}>Add Skill Category</button>
             </>
           } 
         </Category>
