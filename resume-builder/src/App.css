@@ -103,8 +103,8 @@ body {
 .resumeSectionHeader {
   width:100%;
   text-align: left;
-  border-bottom: 2px solid black;
-  padding-bottom: 4px;
+  border-bottom: 3px solid black;
+  padding-bottom: 2px;
   font-size: 1.4vw;
 }
 
@@ -124,6 +124,7 @@ body {
   text-decoration: none;
   color:black;
   padding: 0;
+  font-style: normal;
 }
 
 .projTitle {
@@ -196,5 +197,40 @@ body {
 }
 
 .skillLine {
-  display:flex
+  display:flex;
+}
+
+.skillLine h2 {
+  font-weight: bold;
+  font-size: 1.1vw;
+}
+
+.skillLine h2::after {
+  content: ':\00a0';
+}
+
+.skill {
+  font-size: 1.1vw;
+}
+.skillLine {
+  padding: .3vh 0;
+  width: 100%;
+}
+
+.generalButtoncontainer {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  grid-column: 1 / span 2;
+}
+
+.achieveInputWrap {
+  display:flex;
+  grid-column: 1 / span 2;
+  justify-content: center;
+}
+
+.achieveInputWrap input {
+  flex-basis: 175%;
 }

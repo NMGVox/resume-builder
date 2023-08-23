@@ -4,18 +4,22 @@ function WorkInput( { id, showContent, updateInput, updateAchievements, addAchie
             <label htmlFor={`role${id}`}>Role</label><input onChange={(e)=> updateInput(e, id, 'role')} value={vals.role} type="text" id={`role${id}`} />
             <label htmlFor={`company${id}`}>Company</label><input onChange={(e)=> updateInput(e, id, 'companyName')} value={vals.companyName} type="text" id={`company${id}`} />
             <label htmlFor={`location${id}`}>Location</label><input type="text" onChange={(e)=> updateInput(e, id, 'location')} id={`location${id}`} value={vals.location}></input>
-            <label htmlFor={`achievments${id}`}>Achievements <button onClick={(e) => addAchievement(e, id)}>+</button></label>
+            <div className="achieveInputWrap"><label htmlFor={`achievments${id}`}>Achievements </label></div>
             {achievementList.map(achievement => {
                 return (
                     <>
-                        <input key={achievement.id} value={achievement.text} onChange={(e) => updateAchievements(e, id, achievement.id)} type="text" id={`achievments${id}`} />
-                        <button onClick={(e) => removeAchievement(e, id, achievement.id)}>Remove</button> 
+                        <div className="achieveInputWrap">
+                            <input key={achievement.id} value={achievement.text} onChange={(e) => updateAchievements(e, id, achievement.id)} type="text" id={`achievments${id}`} />
+                            <button onClick={(e) => removeAchievement(e, id, achievement.id)}>x</button>
+                        </div>
                     </>   
                 )
             })}
+            <button className="generalButtoncontainer" onClick={(e) => addAchievement(e, id)}>Add Achievement</button>
             <label htmlFor={`startDate${id}`}>Start Date</label><input onChange={(e)=> updateInput(e, id, 'startDate')} value={vals.startDate} type="text" id={`startDate${id}`} />
             <label htmlFor={`endDate${id}`}>End Date</label><input onChange={(e)=> updateInput(e, id, 'endDate')} value={vals.endDate} type="text" id={`endDate${id}`} />
-            <button onClick={(e) => removeWork(e, id)}>Remove This Experience</button>
+            <div className="generalButtoncontainer"><button onClick={(e) => removeWork(e, id)}>Remove This Experience</button></div>
+            
         </div>
     )
 }

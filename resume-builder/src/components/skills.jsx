@@ -2,27 +2,29 @@ function SkillInput( { id, updateSkillType, removeSkillType, updateSkill, remove
     return (
         <div className="inputWrapper">
             <label htmlFor="">Skill Type</label><input onChange={(e) => updateSkillType(e, id)} value={vals.skillType} type="text"></input>
-            <label htmlFor="">Skills</label>     
+            <div className="generalButtoncontainer"><label htmlFor="">Skills</label> </div>    
             {
                 skillList.map(skill => {
                     return(
                         <>
-                            <input key={skill.id} value={skill.text} type="text" onChange={(e) => updateSkill(e, id, skill.id)} />
-                            <button onClick={(e) => removeSkill(e, id, skill.id)}>X</button>
+                            <div className="achieveInputWrap">
+                                <input key={skill.id} value={skill.text} type="text" onChange={(e) => updateSkill(e, id, skill.id)} />
+                                <button onClick={(e) => removeSkill(e, id, skill.id)}>X</button>
+                            </div>
                         </>
                     );
                 })
             }
-            <button onClick={(e) => addSkill(e, id)}>Add Skill to type</button>
+            <div className="generalButtoncontainer"><button onClick={(e) => addSkill(e, id)}>Add Skill to type</button></div>
         </div>
     )
 }
 
 function SkillDisplay({ skillType, skills }) {
     return(
-        <div className="skillWrapper">
+        <div className="sectionChildWrapper">
             <div className="skillLine">
-                <h2>{skillType && `${skillType}:  `}</h2>
+                {skillType && <h2>{skillType}</h2>}
                 {
                     skills.map((skill) => {
                         return <p className="skill" key={skill.id}>{skill.id !== 0 && ', '}{skill.text && `${skill.text}`}</p>

@@ -9,7 +9,7 @@ export default function EducationInput( { id, removeEducation, updateEduInput, v
             <label htmlFor={`degree${id}`}>Degree: </label><input onChange={(e) => updateEduInput(e, id, 'degree')} value={vals.degree} type="text" id={`degree${id}`} />
             <label htmlFor={`gpa${id}`}>GPA: </label><input onChange={(e) => updateEduInput(e, id, 'gpa')} value={vals.gpa} type="number" id={`gpa${id}`} />
             <label htmlFor={`location${id}`}>Location: </label><input onChange={(e) => updateEduInput(e, id, 'location')} value={vals.location} type="address" id={`location${id}`} />
-            <button onClick={(e) => {removeEducation(e, id)}}>X</button>
+            <div className="generalButtoncontainer"><button onClick={(e) => {removeEducation(e, id)}}>Remove Education</button></div>
         </div>
     )
 }
