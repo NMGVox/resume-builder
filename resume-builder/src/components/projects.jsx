@@ -4,7 +4,7 @@ function ProjectInput({ id, updateInput, removeProject, achievementList, removeA
             <label htmlFor={`projectName${id}`}>Project Name: </label><input onChange={(e) => updateInput(e, id, 'projectName')} value={vals.projectName} type="text" />
             <label htmlFor={`techStack${id}`}>Tech Stack: </label><input onChange={(e) => updateInput(e, id, 'techStack')} value={vals.techStack} type="text" />
             <label htmlFor={`link${id}`}>Live link: </label><input onChange={(e) => updateInput(e, id, 'link')} value={vals.link} type="text" />
-            <div className="achieveInputWrap"><label>Achievements: </label></div>
+            <label>Achievements: </label>
             {achievementList.map(achievement => {
                 return (
                     <>

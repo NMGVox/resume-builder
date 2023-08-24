@@ -4,7 +4,7 @@ function WorkInput( { id, showContent, updateInput, updateAchievements, addAchie
             <label htmlFor={`role${id}`}>Role</label><input onChange={(e)=> updateInput(e, id, 'role')} value={vals.role} type="text" id={`role${id}`} />
             <label htmlFor={`company${id}`}>Company</label><input onChange={(e)=> updateInput(e, id, 'companyName')} value={vals.companyName} type="text" id={`company${id}`} />
             <label htmlFor={`location${id}`}>Location</label><input type="text" onChange={(e)=> updateInput(e, id, 'location')} id={`location${id}`} value={vals.location}></input>
-            <div className="achieveInputWrap"><label htmlFor={`achievments${id}`}>Achievements </label></div>
+            <label htmlFor={`achievments${id}`}>Achievements </label>
             {achievementList.map(achievement => {
                 return (
                     <>

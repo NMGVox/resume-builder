@@ -20,7 +20,7 @@ body {
   color: white;
   height: 100vh;
   overflow-y: auto;
-  border-right: 2px solid black;
+  border-right: 2px solid #172554;
   position: sticky;
   top: 0;
 }
@@ -31,7 +31,7 @@ body {
   align-items: center;
   width: 100%;
   padding: 1.5vh 0;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #172554;
   flex-direction: column;
   gap: 1vh;
 }
@@ -47,19 +47,24 @@ body {
   filter: invert(100%) sepia(0%) saturate(7470%) hue-rotate(62deg) brightness(105%) contrast(109%);
 }
 
-.inputWrapper {
-  display: grid;
-  grid-template-columns: max-content max-content;
-  gap: 5px;
+.collapse:hover {
+  cursor: pointer;
 }
 
-.inputWrapper label {
-  text-align: right;
+.inputWrapper {
+  display: grid;
+  grid-template-columns: max-content;
+  gap: 5px;
+  width: 80%;
 }
+
+/* .inputWrapper input {
+  grid-column: 1 / span 2;
+} */
 
 .resume-display {
   flex: 1 0 auto;
-  background-color: #bae6fd;
+  background-color: #dbeafe;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -229,8 +234,30 @@ body {
   display:flex;
   grid-column: 1 / span 2;
   justify-content: center;
+  gap: 5px;
 }
 
 .achieveInputWrap input {
   flex-basis: 175%;
+}
+
+.add-x {
+  padding: 1vh 8px;
+  background-color: #8D8DB9;
+  color:black;
+  border-radius: 4px;
+  border:none;
+  font-size: 1.1vw;
+}
+
+input {
+  border-radius: 8px;
+  padding: 3px 4px;
+  border: none;
+  width:100%;
+  grid-column: 1 / span 2;
+}
+
+button:hover {
+  cursor: pointer;
 }
