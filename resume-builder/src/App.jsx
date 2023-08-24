@@ -29,6 +29,7 @@ function App() {
       gpa: '',
       degree: '',
       major: '',
+      show: true,
     },
   ]);
 
