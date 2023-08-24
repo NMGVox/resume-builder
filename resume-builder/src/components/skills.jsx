@@ -1,4 +1,4 @@
-function SkillInput( { id, updateSkillType, removeSkillType, updateSkill, removeSkill, addSkill, skillList, vals } ) {
+function SkillInput( { id, showRemove, updateSkillType, removeSkillType, updateSkill, removeSkill, addSkill, skillList, vals } ) {
     return (
         <div className="inputWrapper">
             <label htmlFor="">Skill Type</label><input onChange={(e) => updateSkillType(e, id)} value={vals.skillType} type="text"></input>
@@ -9,13 +9,14 @@ function SkillInput( { id, updateSkillType, removeSkillType, updateSkill, remove
                         <>
                             <div className="achieveInputWrap">
                                 <input key={skill.id} value={skill.text} type="text" onChange={(e) => updateSkill(e, id, skill.id)} />
-                                <button onClick={(e) => removeSkill(e, id, skill.id)}>X</button>
+                                <button className="removeAchieve" onClick={(e) => removeSkill(e, id, skill.id)}>X</button>
                             </div>
                         </>
                     );
                 })
             }
-            <div className="generalButtoncontainer"><button onClick={(e) => addSkill(e, id)}>Add Skill to type</button></div>
+            <div className="generalButtoncontainer"><button className="addAchievement" onClick={(e) => addSkill(e, id)}>Add Skill to type</button></div>
+            {showRemove && <div className="generalButtoncontainer"><button onClick={(e) => removeSkillType(e, id)}>Remove Skill Category</button></div>} 
         </div>
     )
 }

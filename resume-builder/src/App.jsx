@@ -6,7 +6,6 @@ import EducationDisplay from './components/educationdisplay';
 import { WorkDisplay, WorkInput } from './components/workInput';
 import { ProjectDisplay, ProjectInput } from './components/projects';
 import { SkillDisplay, SkillInput } from './components/skills';
-import './App.css'
 
 
 function App() {
@@ -138,6 +137,7 @@ function App() {
         removeEducation={removeEducation}
         updateEduInput={updateEduInput}
         vals={education}
+        showRemove={educationInfo.length > 1 ? true : false}
       />
     );
   });
@@ -224,6 +224,7 @@ function App() {
         removeAchievement={removeWorkAchievement}
         removeWork={removeWork}
         vals={work}
+        showRemove={workInfo.length > 1 ? true : false}
       />
     )
   })
@@ -308,6 +309,7 @@ function App() {
         updateAchievement={updateProjectAchievement}
         removeProject={removeProject}
         vals={project}
+        showRemove={project.length > 1 ? true : false}
       />
     )
   })
@@ -389,6 +391,7 @@ function App() {
         removeSkill={removeSkill}
         updateSkill={updateSkill}
         vals={skill}
+        showRemove={skills.length > 1 ? true : false}
       />
     )
   })
@@ -399,7 +402,7 @@ function App() {
     <>
       <div className="input-container">
         <div className="category">
-          <h1 className="title">Resume Builder</h1>
+          <h1 className="title">Vox's Resume Builder</h1>
         </div>
         
         <Category categoryName="Personal Info" index={0} isActive={activeIndex === 0} showContent={showContent}>

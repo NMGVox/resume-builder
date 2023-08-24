@@ -1,4 +1,4 @@
-function ProjectInput({ id, updateInput, removeProject, achievementList, removeAchievement, updateAchievement, addAchievement, vals}) {
+function ProjectInput({ id, showRemove, updateInput, removeProject, achievementList, removeAchievement, updateAchievement, addAchievement, vals}) {
     return(
         <div className="inputWrapper">
             <label htmlFor={`projectName${id}`}>Project Name: </label><input onChange={(e) => updateInput(e, id, 'projectName')} value={vals.projectName} type="text" />
@@ -15,8 +15,8 @@ function ProjectInput({ id, updateInput, removeProject, achievementList, removeA
                     </>   
                 )
             })}
-            <div className="generalButtoncontainer"><button onClick={(e) => addAchievement(e, id)}>Add Achievement</button>  </div>         
-            <div className="generalButtoncontainer"><button onClick={(e) => removeProject(e, id)}>Remove Project</button></div>
+            <div className="generalButtoncontainer"><button className="addAchievement" onClick={(e) => addAchievement(e, id)}>Add Achievement</button></div>         
+            {showRemove && <div className="generalButtoncontainer"><button onClick={(e) => removeProject(e, id)}>Remove Project</button></div>}
         </div>
     )
 }

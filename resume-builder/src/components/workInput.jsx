@@ -1,4 +1,4 @@
-function WorkInput( { id, showContent, updateInput, updateAchievements, addAchievement, achievementList, removeAchievement, removeWork, vals } ) {
+function WorkInput( { showRemove, id, showContent, updateInput, updateAchievements, addAchievement, achievementList, removeAchievement, removeWork, vals } ) {
     return(
         <div className="inputWrapper">
             <label htmlFor={`role${id}`}>Role</label><input onChange={(e)=> updateInput(e, id, 'role')} value={vals.role} type="text" id={`role${id}`} />
@@ -10,15 +10,15 @@ function WorkInput( { id, showContent, updateInput, updateAchievements, addAchie
                     <>
                         <div className="achieveInputWrap">
                             <input key={achievement.id} value={achievement.text} onChange={(e) => updateAchievements(e, id, achievement.id)} type="text" id={`achievments${id}`} />
-                            <button onClick={(e) => removeAchievement(e, id, achievement.id)}>x</button>
+                            <button className="removeAchieve" onClick={(e) => removeAchievement(e, id, achievement.id)}>x</button>
                         </div>
                     </>   
                 )
             })}
-            <button className="generalButtoncontainer" onClick={(e) => addAchievement(e, id)}>Add Achievement</button>
+            <div className="generalButtoncontainer"><button className="addAchievement" onClick={(e) => addAchievement(e, id)}>Add Achievement</button></div>
             <label htmlFor={`startDate${id}`}>Start Date</label><input onChange={(e)=> updateInput(e, id, 'startDate')} value={vals.startDate} type="text" id={`startDate${id}`} />
             <label htmlFor={`endDate${id}`}>End Date</label><input onChange={(e)=> updateInput(e, id, 'endDate')} value={vals.endDate} type="text" id={`endDate${id}`} />
-            <div className="generalButtoncontainer"><button onClick={(e) => removeWork(e, id)}>Remove This Experience</button></div>
+            {showRemove && <div className="generalButtoncontainer"><button onClick={(e) => removeWork(e, id)}>Remove This Experience</button></div>}
             
         </div>
     )
