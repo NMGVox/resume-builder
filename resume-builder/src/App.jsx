@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Category from './components/category';
 import PersonalInfo from './components/personalInfo';
 import EducationInput from './components/educationInfo';
@@ -397,6 +397,39 @@ function App() {
     )
   })
 
+  //Load input from localStorage
+  useEffect(() => {
+    if(window.localStorage.getItem("personal")) {
+      let data = window.localStorage.getItem("personal");
+      setPersonalInfo(JSON.parse(data));
+    }
+    if(window.localStorage.getItem("education")) {
+      let data = window.localStorage.getItem("education");
+      setEducationInfo(JSON.parse(data));
+    }
+    if(window.localStorage.getItem("work")) {
+      let data = window.localStorage.getItem("work");
+      setWorkInfo(JSON.parse(data));
+    }
+    if(window.localStorage.getItem("projects")) {
+      let data = window.localStorage.getItem("projects");
+      setProjects(JSON.parse(data));
+    }
+    if(window.localStorage.getItem("skills")) {
+      let data = window.localStorage.getItem("skills");
+      setSkills(JSON.parse(data));
+    }
+  }, [])
+
+  function saveProgress() {
+    window.localStorage.setItem("personal", JSON.stringify(personalInfo));
+    window.localStorage.setItem("education", JSON.stringify(educationInfo));
+    window.localStorage.setItem("work", JSON.stringify(workInfo));
+    window.localStorage.setItem("projects", JSON.stringify(projects));
+    window.localStorage.setItem("skills", JSON.stringify(skills));
+    return;
+  }
+
   let fullName = `${personalInfo.firstName} ${personalInfo.lastName}`;
 
   return (
@@ -457,6 +490,9 @@ function App() {
             </>
           } 
         </Category>
+        <div className="generalButtonContainer">
+          <button onClick={() => saveProgress()} className='addAchievement'>Save</button>
+        </div>
       </div>
       <div className="resume-display">
         <div className="resume">
